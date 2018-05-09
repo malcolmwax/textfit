@@ -7,7 +7,8 @@
     "example": "examples"
   },
   "scripts": {
-    "publish": "aws s3 cp src/textfit.js s3://outfit-assets-production/scripts/textfit.js --acl public-read"
+    "build": "uglifyjs ./src/textfit.js -m -o ./dist/textfit.min.js",
+    "publish": "npm run build && aws s3 cp dist/textfit.min.js s3://outfit-assets-production/scripts/textfit.min.js --acl public-read"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/Outfitio/textfit/issues"
   },
-  "homepage": "https://github.com/Outfitio/textfit#readme"
+  "homepage": "https://github.com/Outfitio/textfit#readme",
+  "devDependencies": {
+    "uglify-js": "^3.3.24"
+  }
 }

@@ -1,0 +1,89 @@
+<html>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <style>
+    html, body {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .container-root {
+      display: block;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .container1 {
+      width: 500px;
+      height: 500px;
+      background-color: #b12a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container2 {
+      width: 500px;
+      height: 500px;
+      background-color: #205ed6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px;
+    }
+
+    .txt-field {
+      display: block;
+      width: 100%;
+      margin: 5px;
+    }
+
+    .txt-field input {
+      padding: 10px;
+      font-size: 15px;
+      width: 500px;
+    }
+
+    .fitted-text {
+      color: #ffffff;
+      padding: 25px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/resize-observer-polyfill@1.5.0/dist/ResizeObserver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/javascript-debounce@1.0.0/dist/javascript-debounce.min.js"></script>
+  <script src="../src/textfit.js"></script>
+<body>
+  <div class="container-root">
+    <div class="container1">
+      <div class="fitted-text1 fitted-text"></div>
+    </div>
+
+    <div class="container2">
+      <div class="fitted-text2 fitted-text"></div>
+    </div>
+  </div>
+
+  <div class="txt-field">
+    <input type="text" value="" placeholder="Enter some text" oninput="handleTextChange(this.value)" />
+  </div>
+
+  <script type="text/javascript">
+    function handleTextChange(value) {
+      var elem1 = document.querySelector('.fitted-text1');
+      elem1.innerHTML = value;
+      var elem2 = document.querySelector('.fitted-text2');
+      elem2.innerHTML = value;
+    }
+    TextFit.fit({
+      selector: '.fitted-text1',
+      fitMode: 'horizontal',
+      fontSize: '100px'
+    });
+
+    TextFit.fit({
+      selector: '.fitted-text2',
+      fitMode: 'vertical',
+      fontSize: '100px'
+    });
+  </script>
+</body>
+</html>

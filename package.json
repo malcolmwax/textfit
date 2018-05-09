@@ -1,0 +1,27 @@
+{
+  "name": "textfit",
+  "version": "0.0.1",
+  "description": "A JS library to make fitted text easier",
+  "main": "src/textfit.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "publish": "aws s3 cp src/textfit.js s3://outfit-assets-production/scripts/textfit.js --acl public-read"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Outfitio/textfit.git"
+  },
+  "keywords": [
+    "textfit",
+    "fit",
+    "text"
+  ],
+  "author": "Anh Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Outfitio/textfit/issues"
+  },
+  "homepage": "https://github.com/Outfitio/textfit#readme"
+}

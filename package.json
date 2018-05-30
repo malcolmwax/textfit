@@ -7,8 +7,8 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "uglifyjs ./src/textfit.js -m -o ./dist/textfit.min.js",
-    "publish": "npm run build && aws s3 cp dist/textfit.min.js s3://outfit-assets-production/scripts/textfit.min.js --acl public-read"
+    "build": "uglifyjs ./node_modules/resize-observer-polyfill/dist/ResizeObserver.js ./node_modules/javascript-debounce/dist/javascript-debounce.js ./src/textfit.js -m -o ./dist/textfit.$npm_package_version.min.js",
+    "publish": "npm run build && aws s3 cp dist/textfit.$npm_package_version.min.js s3://outfit-assets-production/scripts/textfit.$npm_package_version.min.js --acl public-read"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
   "homepage": "https://github.com/Outfitio/textfit#readme",
   "devDependencies": {
     "uglify-js": "^3.3.24"
+  },
+  "dependencies": {
+    "javascript-debounce": "^1.0.0",
+    "resize-observer-polyfill": "^1.5.0"
   }
 }

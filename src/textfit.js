@@ -16,6 +16,8 @@ TextFit.prototype.initStyles = function() {
   var self = this;
   this.textElements.forEach(function(elem) {
     elem.style['white-space'] = self.fitMode === 'horizontal' ? 'nowrap' : 'normal';
+    // Set Display style to inline block to ensure element is able to overlay parent width
+    elem.style['display'] = self.fitMode === "horizontal" ? "inline-block" : "initial";
     elem.style['font-size'] = self.fontSize;
   });
 }
@@ -34,17 +36,33 @@ TextFit.prototype.observeElements = function() {
   });
 }
 
-TextFit.prototype.getWidth = function(elem) {
-  return elem.getBoundingClientRect().width;
+TextFit.prototype.getWidth = function(elem, isParent) {
+  var style = window.getComputedStyle(elem);
+  var width = elem.getBoundingClientRect().width;
+  var pLeft = parseInt(style.paddingLeft);
+  var pRight = parseInt(style.paddingRight);
+  var mLeft = isParent ? 0 : parseInt(style.marginLeft);
+  var mRight = isParent ? 0 : parseInt(style.marginRight);
+  var bLeft = parseInt(style.borderLeftWidth);
+  var bRight = parseInt(style.borderRightWidth);
+  return width - pLeft - pRight + mLeft + mRight - bLeft - bRight;
 }
 
-TextFit.prototype.getHeight = function(elem) {
-  return elem.getBoundingClientRect().height;
+TextFit.prototype.getHeight = function(elem, isParent) {
+  var style = window.getComputedStyle(elem);
+  var width = elem.getBoundingClientRect().height;
+  var pTop = parseInt(style.paddingTop);
+  var pBottom = parseInt(style.paddingBottom);
+  var mTop = isParent ? 0 : parseInt(style.marginTop);
+  var mBottom = isParent ? 0 : parseInt(style.marginBottom);
+  var bTop = parseInt(style.borderTopWidth);
+  var bBottom = parseInt(style.borderBottomWidth);
+  return width - pTop - pBottom + mTop + mBottom - bTop - bBottom;
 }
 
 TextFit.prototype.isLargerThanParent = function (elem) {
-  return this.getWidth(elem) > this.getWidth(elem.parentElement) ||
-    this.getHeight(elem) > this.getHeight(elem.parentElement);
+  return this.getWidth(elem, false) > this.getWidth(elem.parentElement, true) ||
+    this.getHeight(elem, false) > this.getHeight(elem.parentElement, true);
 }
 
 TextFit.prototype.getFontSize = function(elem) {

@@ -17,7 +17,6 @@ TextFit.prototype.initStyles = function() {
     elem.style['white-space'] = self.fitMode === 'horizontal' ? 'nowrap' : 'normal';
     // Set Display style to inline block to ensure element is able to overlay parent width
     elem.style['display'] = self.fitMode === "horizontal" ? "inline-block" : "initial";
-    elem.style['font-size'] = self.fontSize;
   });
 }
 
@@ -69,7 +68,6 @@ TextFit.prototype.getFontSize = function(elem) {
 }
 
 TextFit.prototype.resize = function(elem) {
-  elem.style['font-size'] = this.fontSize;
   if (!this.isLargerThanParent(elem)) {
     return;
   }

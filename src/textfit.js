@@ -1,8 +1,9 @@
 function TextFit(options) {
   this.selector = options.selector;
   this.textElements = this.selector ? document.querySelectorAll(this.selector) : [];
-  this.fitMode = options.fitMode === 'horizontal' ? 'horizontal' : 'vertical';
-  this.fontSize = options.fontSize || '1em';
+  this.fitMode = options.fitMode === 'vertical' ? 'vertical' : 'horizontal';
+  // Calculate Font Size From Selected Elements
+  this.fontSize = window.getComputedStyle(this.textElements.item(0)).getPropertyValue("font-size");
 }
 
 TextFit.fit = function(options) {

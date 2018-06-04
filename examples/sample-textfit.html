@@ -46,9 +46,10 @@
     .fitted-text {
       color: #ffffff;
       padding: 25px;
+      font-size: 16px;
     }
   </style>
-  <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.1.min.js"></script>
+  <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.2.min.js"></script>
 <body>
   <div class="container-root">
     <div class="container1">
@@ -72,15 +73,12 @@
       elem2.innerHTML = value;
     }
     TextFit.fit({
-      selector: '.fitted-text1',
-      fitMode: 'horizontal',
-      fontSize: '100px'
+      selector: '.fitted-text1'
     });
 
     TextFit.fit({
       selector: '.fitted-text2',
-      fitMode: 'vertical',
-      fontSize: '100px'
+      fitMode: 'vertical'
     });
   </script>
 </body>

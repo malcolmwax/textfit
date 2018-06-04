@@ -1,6 +1,6 @@
 {
   "name": "textfit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A JS library to make fitted text easier",
   "main": "src/textfit.js",
   "directories": {

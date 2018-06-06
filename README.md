@@ -7,7 +7,7 @@ This project was invented to help Outfit designers create fitted text in templat
 In Outfit template, include following scripts
 
 ```html
-<script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.1.min.js" type="text/javascript"></script>
+<script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.3.min.js" type="text/javascript"></script>
 ```
 
 ## Usage

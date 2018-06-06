@@ -17,6 +17,8 @@ TextFit.prototype.initStyles = function() {
     elem.style['white-space'] = self.fitMode === 'horizontal' ? 'nowrap' : 'normal';
     // Set Display style to inline block to ensure element is able to overlay parent width
     elem.style['display'] = self.fitMode === "horizontal" ? "inline-block" : "initial";
+    // Store the Initial Font Size in a Data-Attribute to compare with later
+    elem.dataset.fontSize = window.getComputedStyle(elem).fontSize;
   });
 }
 
@@ -91,6 +93,7 @@ TextFit.prototype.resize = function(elem) {
 TextFit.prototype.observe = function(elem) {
   var self = this;
   var resizeObserver = new ResizeObserver(debounce(function () {
+    elem.style.fontSize = elem.dataset.fontSize;
     self.resize(elem);
   }, 100));
   resizeObserver.observe(elem);
